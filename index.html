@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Guitar Configurator</title>
+  
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/webcomponentsjs/2.2.10/webcomponents-loader.js"></script>
+  <!-- <script type="text/javascript" src="https://www.vectary.com/embed/viewer/v1/scripts/api/api.js"></script> -->
+  <script type="text/javascript" src="http://127.0.0.1:8002/embed/viewer/v1/scripts/api/api.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>  
+  <script type="text/javascript" src="scripts/index.js"></script>
+  <link rel="stylesheet" href="styles/main.css">
+</head>
+
+<body onload="apiLogic()">
+
+
+    <div id="viewer">  
+      <vctr-viewer id="dowina" model="c3059bef-0a9a-4737-bcad-d2848d195778" env="default" showPreloader="0" enableApi="1"></vctr-viewer>
+
+      <div id="menu" class="column is-one-third">
+  
+        <div class="steps">
+          <div class="step">
+            <h2>Choose shape</h2>
+            <p>Lorem ipsum...</p>
+            <ul>
+              <li><a href="#" id="guitar1">Dreadnough</a></li>
+              <li><a href="#" id="guitar2">Dreadnough cutaway</a></li>
+              <li><a href="#" id="guitar3">Hybrid cutaway</a></li>
+            </ul>
+          </div>
+          <div class="step">
+            <h2>Choose top</h2>
+            <p>Lorem ipsum...</p>
+            <ul>
+              <li><a href="#" id="material1f">Material 1</a></li>
+              <li><a href="#" id="material2f">Material 2</a></li>
+              <li><a href="#" id="material3f">Material 3</a></li>
+            </ul>
+          </div>
+  
+          <div class="step">
+            <h2>Choose back</h2>
+            <p>Lorem ipsum...</p>
+            <ul>
+              <li><a href="#" id="material1b">Material 1</a></li>
+              <li><a href="#" id="material2b">Material 2</a></li>
+              <li><a href="#" id="material3b">Material 3</a></li>
+            </ul>
+          </div>
+  
+          <div class="step">
+            <h2>Choose sides</h2>
+            <p>Lorem ipsum...</p>
+            <ul>
+              <li><a href="#" id="material1s">Material 1</a></li>
+              <li><a href="#" id="material2s">Material 2</a></li>
+              <li><a href="#" id="material3s">Material 3</a></li>
+            </ul>
+          </div>
+  
+          <div class="step">
+              <h2>Choose rosette</h2>
+              <p>Lorem ipsum...</p>
+          </div>
+         
+          <div class="step">
+              <h2>Choose electronics</h2>
+              <p>Lorem ipsum...</p>
+          </div>
+          
+          <div class="step">
+              <h2>Choose bag</h2>
+              <p>Lorem ipsum...</p>
+          </div>
+
+          <div class="step">
+              <h2>Summary</h2>
+              <p>Lorem ipsum...</p>
+          </div>
+  
+        </div>
+  
+        <a class="back" href="">Back</a>
+        <a class="next" href="">Next</a>
+      </div>
+    </div>
+
+
+  
+
+
+
+  <!-- <script type="module" src="https://www.vectary.com/embed/viewer/v1/scripts/vctr-viewer.js"></script> -->
+  <script type="module" src="http://127.0.0.1:8002/embed/viewer/v1/scripts/vctr-viewer.js"></script>
+
+</body>
+</html>
