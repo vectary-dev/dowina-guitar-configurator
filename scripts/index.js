@@ -1,47 +1,4 @@
-//jQuery
-$(document).ready(function(){
-
-  //Disable clicks for href=# 
-  $('a[href="#"]').click(function(e) {
-      e.preventDefault ? e.preventDefault() : e.returnValue = false;
-  });
-
-  //Next/Back paging
-  $(".steps .step").each(function(e) {
-      if (e != 0)
-          $(this).hide();
-  });
-  
-  $(".next").click(function(){
-      if ($(".steps .step:visible").next().length != 0)
-          $(".steps .step:visible").next().show().prev().hide();
-      else {
-          $(".steps .step:visible").hide();
-          $(".steps .step:first").show();
-      }
-      return false;
-  });
-
-  $(".back").click(function(){
-      if ($(".steps .step:visible").prev().length != 0)
-          $(".steps .step:visible").prev().show().next().hide();
-      else {
-          $(".steps .step:visible").hide();
-          $(".steps .step:last").show();
-      }
-      return false;
-  });
-});
-
-
-
-
-
-
-
-
-
-//API
+// VIEWER API
 async function apiLogic() {
   console.log("Example client script running..");
 
@@ -267,3 +224,39 @@ async function apiLogic() {
     testGlobalErrHandler(e);
   }
 }
+
+
+//jQuery
+$(document).ready(function(){
+
+  //Disable clicks for href=# 
+  $('a[href="#"]').click(function(e) {
+      e.preventDefault ? e.preventDefault() : e.returnValue = false;
+  });
+
+  //Next/Back paging
+  $(".steps .step").each(function(e) {
+      if (e != 0)
+          $(this).hide();
+  });
+  
+  $(".next").click(function(){
+      if ($(".steps .step:visible").next().length != 0)
+          $(".steps .step:visible").next().show().prev().hide();
+      else {
+          $(".steps .step:visible").hide();
+          $(".steps .step:first").show();
+      }
+      return false;
+  });
+
+  $(".back").click(function(){
+      if ($(".steps .step:visible").prev().length != 0)
+          $(".steps .step:visible").prev().show().next().hide();
+      else {
+          $(".steps .step:visible").hide();
+          $(".steps .step:last").show();
+      }
+      return false;
+  });
+});
