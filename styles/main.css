@@ -1,49 +1,88 @@
 html, body {
   margin: 0;
   padding: 0;
+}
+
+body {
   font-family: sans-serif;
   color: white;
+  min-width: 800px;
 }
 
 a {
   color: green;
 }
 
-#viewer {
-  display: block;
-  height: 100%;
-  background: -webkit-gradient(linear, left top, left bottom, from(rgba(20, 20, 20, 0.7)), to(rgba(20, 20, 20, 0.7))), url("http://www.seasidelounge.com/photos2017/Room_A_Live_Pano_02.jpg") no-repeat center center fixed;
-  background: linear-gradient(rgba(20, 20, 20, 0.7), rgba(20, 20, 20, 0.7)), url("http://www.seasidelounge.com/photos2017/Room_A_Live_Pano_02.jpg") no-repeat center center fixed;
-  background-size: cover;
+#app {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  width: 100%;
 }
 
-#menu {
+#app #viewer {
+  -webkit-box-flex: 2;
+      -ms-flex: 2 0 0px;
+          flex: 2 0 0;
+  height: 100vh;
+}
+
+#app #menu {
+  -webkit-box-flex: 1;
+      -ms-flex: 1 0 0px;
+          flex: 1 0 0;
+  height: 100vh;
   background: #272727;
-  position: absolute;
-  right: 0;
-  top: 0;
-  width: 30%;
-  min-width: 300px;
-  max-width: 500px;
-  height: 100%;
   -webkit-box-shadow: -10px 0px 30px -20px black;
           box-shadow: -10px 0px 30px -20px black;
 }
 
-#menu .steps {
+#app #menu #steps {
   padding: 20px;
 }
 
-#menu .steps .step ul {
+#app #menu #steps .dots {
+  text-align: center;
+}
+
+#app #menu #steps .dots .dot {
+  height: 15px;
+  width: 15px;
+  margin: 0 2px;
+  background-color: #bbb;
+  border-radius: 50%;
+  display: inline-block;
+  -webkit-transition: background-color 0.6s ease;
+  transition: background-color 0.6s ease;
+}
+
+#app #menu #steps .dots .dot.active {
+  background-color: green;
+}
+
+#app #menu #steps .step {
+  -webkit-animation-name: fade;
+  -webkit-animation-duration: 1.5s;
+  animation-name: fade;
+  animation-duration: 1.5s;
+}
+
+#app #menu #steps .step ul {
   height: 200px;
   overflow: scroll;
 }
 
-#menu .steps .step ul li {
+#app #menu #steps .step ul li {
   list-style: none;
 }
 
-#menu .steps .step ul.thumbnails li {
+#app #menu #steps .step ul.thumbnails li {
   text-align: center;
   width: 33%;
   padding: 10px;
@@ -51,27 +90,46 @@ a {
   float: left;
 }
 
-#menu .steps .step ul::after {
+#app #menu #steps .step ul::after {
   content: "";
   clear: both;
   display: table;
 }
 
-#menu .buttons {
-  position: absolute;
-  width: 100%;
+#app #menu .buttons {
+  position: fixed;
   bottom: 10px;
 }
 
-#menu .buttons .btn {
+#app #menu .buttons .button {
   float: left;
   padding: 10px 50px;
   color: white;
 }
 
-#menu .buttons .btn.next {
+#app #menu .buttons .button#next {
   border: 1px solid green;
   float: right;
   color: green;
 }
+
+@-webkit-keyframes fade {
+  from {
+    opacity: .4;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fade {
+  from {
+    opacity: .4;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Fading animation */
 /*# sourceMappingURL=main.css.map */
