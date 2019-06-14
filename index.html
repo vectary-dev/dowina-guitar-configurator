@@ -8,7 +8,6 @@
   
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/webcomponentsjs/2.2.10/webcomponents-loader.js"></script>
   <script type="text/javascript" src="https://www.vectary.com/embed/viewer/v1/scripts/api/api.js"></script>
-  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>  
   <script type="text/javascript" src="scripts/index.js"></script>
   <link rel="stylesheet" href="styles/main.css">
 </head>
@@ -23,15 +22,15 @@
         env="default" 
         showPreloader="0" 
         gestureHandling="superior" 
-        showGesturePrompts=1 
-        zoom=1 
+        showGesturePrompts=0 
+        zoom=1
         rotateY=1 
         panX=0 
         panY=0 
         enableApi="1" 
         minAzimuth=-90 
         maxAzimuth=90 
-        minPolar=-90 
+        minPolar=-80 
         maxPolar=90
       >
       </vctr-viewer>
@@ -52,14 +51,13 @@
           <span class="dot"></span>          
         </div>
 
-        <div class="step">
-          
+        <div class="step">          
           <h2>Choose shape</h2>
           <p>Lorem ipsum...</p>
           <ul class="thumbnails">
-            <li><a href="#" id="guitar1">Dreadnough</a></li>
-            <li><a href="#" id="guitar2">Dreadnough cutaway</a></li>
-            <li><a href="#" id="guitar3">Hybrid cutaway</a></li>
+            <li><a href="#" class="step1 body0">Dreadnough</a></li>
+            <li><a href="#" class="step1 body1">Dreadnough cutaway</a></li>
+            <li><a href="#" class="step1 body2">Hybrid cutaway</a></li>
           </ul>
           
         </div>
@@ -68,9 +66,9 @@
           <h2>Choose top</h2>
           <p>Lorem ipsum...</p>
           <ul class="thumbnails">
-            <li><a href="#" id="material1f">Wood</a></li>
-            <li><a href="#" id="material2f">White</a></li>
-            <li><a href="#" id="material3f">Brown</a></li>
+            <li><a href="#" class="step2 material0">Wood</a></li>
+            <li><a href="#" class="step2 material1">White</a></li>
+            <li><a href="#" class="step2 material2">Brown</a></li>
           </ul>
         </div>
         
@@ -78,9 +76,9 @@
           <h2>Choose back</h2>
           <p>Lorem ipsum...</p>
           <ul class="thumbnails">
-            <li><a href="#" id="material1b">Wood</a></li>
-            <li><a href="#" id="material2b">White</a></li>
-            <li><a href="#" id="material3b">Brown</a></li>
+            <li><a href="#" class="step3 material0">Wood</a></li>
+            <li><a href="#" class="step3 material1">White</a></li>
+            <li><a href="#" class="step3 material2">Brown</a></li>
           </ul>
         </div>
 
@@ -88,9 +86,9 @@
           <h2>Choose sides</h2>
           <p>Lorem ipsum...</p>
           <ul class="thumbnails">
-            <li><a href="#" id="material1s">Wood</a></li>
-            <li><a href="#" id="material2s">White</a></li>
-            <li><a href="#" id="material3s"><Brown></Brown></a></li>
+            <li><a href="#" class="step4 material0">Wood</a></li>
+            <li><a href="#" class="step4 material1">White</a></li>
+            <li><a href="#" class="step4 material2"><Brown></Brown></a></li>
           </ul>
         </div>
 
@@ -98,9 +96,9 @@
           <h2>Choose rosette</h2>
           <p>Lorem ipsum...</p>
           <ul class="thumbnails">
-            <li><a href="#" id="">Wood</a></li>
-            <li><a href="#" id="">XXX</a></li>
-            <li><a href="#" id="">YYY</a></li>
+            <li><a href="#" class="">Wood</a></li>
+            <li><a href="#" class="">XXX</a></li>
+            <li><a href="#" class="">YYY</a></li>
           </ul>
         </div>
 
