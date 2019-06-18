@@ -49,11 +49,14 @@ async function vectaryViewer() {
       } 
       
       function saveData (step, value) {
-        localStorage.setItem(step, value);
+        localStorage.setItem(step, JSON.stringify(value));
       }
 
-      function loadData (step, value) {
-
+      function loadData (step) {
+        if(localStorage.getItem(step)===null) {
+          return false;
+        }
+        return JSON.parse(localStorage.getItem(step));
       }
 
 
@@ -65,6 +68,8 @@ async function vectaryViewer() {
 
       const setVisibilityMultiple = (arr, visible) => {
         arr.forEach(element => {
+          //const elementObject = dowina.getObjectByName(element);
+          console.log('element', element);
           dowina.setVisibility(element, visible);
         });
       };
@@ -75,25 +80,29 @@ async function vectaryViewer() {
         bodyTop = body[0];
         bodyBack = body[1];
         bodySide = body[2];
-        console.log(currentBody);
+        //console.log(currentBody);
       };
 
-      //Find UUIDs of objects by their name
-      const body1Top = objects.find( obj => obj.name === 'Clone_of_"Top1"' );
-      const body1Back = objects.find( obj => obj.name === 'Clone_of_"Back1"' );
-      const body1Side = objects.find( obj => obj.name === 'Clone_of_"Side1"' );
-      const body2Top = objects.find( obj => obj.name === 'Clone_of_"Top2"' );
-      const body2Back = objects.find( obj => obj.name === 'Clone_of_"Back2"' );
-      const body2Side = objects.find( obj => obj.name === 'Clone_of_"Side2"' );
-      const body3Top = objects.find( obj => obj.name === 'Clone_of_"Top3"' );
-      const body3Back = objects.find( obj => obj.name === 'Clone_of_"Back3"' );
-      const body3Side = objects.find( obj => obj.name === 'Clone_of_"Side3"' );
+      //Find UUIDs of objects by their name      
+      // const body1Top = await dowina.getObjectByName('Clone_of_"Top1"');
+      // const body1Back = await dowina.getObjectByName('Clone_of_"Back1"' );
+      // const body1Side = await dowina.getObjectByName('Clone_of_"Side1"' );
+      // const body2Top = await dowina.getObjectByName('Clone_of_"Top2"' );
+      // const body2Back = await dowina.getObjectByName('Clone_of_"Back2"' );
+      // const body2Side = await dowina.getObjectByName('Clone_of_"Side2"' );
+      // const body3Top = await dowina.getObjectByName('Clone_of_"Top3"' );
+      // const body3Back = await dowina.getObjectByName('Clone_of_"Back3"' );
+      // const body3Side = await dowina.getObjectByName('Clone_of_"Side3"' );
      
+      //console.log('body1Back', body1Back);
+
       let body = [
-        [body1Top.uuid, body1Back.uuid, body1Side.uuid], //Body 0
-        [body2Top.uuid, body2Back.uuid, body2Side.uuid], //Body 1
-        [body3Top.uuid, body3Back.uuid, body3Side.uuid]  //Body 2
+        ['Clone_of_"Top1"', 'Clone_of_"Back1"', 'Clone_of_"Side1"'], //Body 0
+        ['Clone_of_"Top2"', 'Clone_of_"Back2"', 'Clone_of_"Side2'], //Body 1
+        ['Clone_of_"Top3"', 'Clone_of_"Back3"', 'Clone_of_"Side3"'],  //Body 2
       ];
+
+      console.log('body', body);
 
       //Identify separate body parts
       let bodyTop = body[0][0];
@@ -167,9 +176,23 @@ async function vectaryViewer() {
       dowina.setCamera(camera[0]);
       dowina.setBackground('files/theaterBG.hdr');
       //IF EXISTS, LOAD VALUES FROM LOCAL STORAGE
-      setVisibilityMultiple(body[0], true);
-      setVisibilityMultiple(body[1], false);
-      setVisibilityMultiple(body[2], false);
+      let loaded = '';
+      if (loadData('step1')) {
+        let loaded = loadData('step1');
+        setVisibilityMultiple(loaded, true);  
+      }
+      else {
+        setVisibilityMultiple(body[0], true);
+        saveData ('step1', body[0]);
+      }
+      
+
+      console.log('loaded', loaded);
+      console.log('body1', body[0]);
+      //setVisibilityMultiple(body[0], false);
+      //setVisibilityMultiple(body[1], false);
+      //setVisibilityMultiple(body[2], false);
+      // setVisibilityMultiple(loaded, true);
       //goToStep(1);
 
       document.getElementById("next").addEventListener("click", function(event){
@@ -227,36 +250,39 @@ async function vectaryViewer() {
           if ( event.target.classList.contains( 'material2' ) ) {             
             dowina.setMaterial(currentElement, material[2]);
             saveData ('step2', material[2]);
-          }
-          localStorage.setItem('step2', mat1Id);
+          }          
         }        
         //Step3
         if ( event.target.classList.contains( 'step3' ) ) {
           currentElement = currentBody[1];
           if ( event.target.classList.contains( 'material0' ) ) {            
-            dowina.setMaterial(currentElement, material[0]);         
+            dowina.setMaterial(currentElement, material[0]);
+            saveData ('step3', material[0]);
           }
           if ( event.target.classList.contains( 'material1' ) ) {             
-            dowina.setMaterial(currentElement, material[1]);                   
+            dowina.setMaterial(currentElement, material[1]);
+            saveData ('step3', material[1]);
           }
           if ( event.target.classList.contains( 'material2' ) ) {
             dowina.setMaterial(currentElement, material[2]);
-          }
-          localStorage.setItem('step3', mat1Id);
+            saveData ('step3', material[2]);
+          }          
         }
         //Step4
         if ( event.target.classList.contains( 'step4' ) ) {
           currentElement = currentBody[2]; 
           if ( event.target.classList.contains( 'material0' ) ) { 
             dowina.setMaterial(currentElement, material[0]);
+            saveData ('step4', material[0]);
           }
           if ( event.target.classList.contains( 'material1' ) ) { 
-            dowina.setMaterial(currentElement, material[1]);            
+            dowina.setMaterial(currentElement, material[1]);
+            saveData ('step4', material[1]);
           }
           if ( event.target.classList.contains( 'material2' ) ) { 
             dowina.setMaterial(currentElement, material[2]);
-          }
-          localStorage.setItem('step4', mat1Id);
+            saveData ('step4', material[2]);
+          }          
         }
         //Step5
         if ( event.target.classList.contains( 'step5' ) ) {
