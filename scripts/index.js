@@ -19,7 +19,25 @@ async function vectaryViewer() {
 
   async function onReady() {
     console.log("API ready");
+
+    async function readTextFile(file) {
+      return new Promise((resolve, reject) => {
+        var rawFile = new XMLHttpRequest();
+        rawFile.overrideMimeType("application/json");
+        rawFile.open("GET", file, true);
+        rawFile.onreadystatechange = () => {
+          if (rawFile.readyState === 4 && rawFile.status == "200") {
+            resolve(rawFile.responseText);
+          }
+        }
+        rawFile.send(null);
+      });
+    }
+
     try {
+      const json = await readTextFile("files/resource.json");
+      const resource = JSON.parse(json);
+
       // PAGING ////////////////////////////////////////////////////
       var stepIndex = 1;
       showSteps(stepIndex);
@@ -71,9 +89,9 @@ async function vectaryViewer() {
       };
 
       let bodyPartsNames = [
-        ['Clone_of_"Top1"', 'Clone_of_"Back1"', 'Clone_of_"Side1"'], //Body 0
-        ['Clone_of_"Top2"', 'Clone_of_"Back2"', 'Clone_of_"Side2"'], //Body 1
-        ['Clone_of_"Top3"', 'Clone_of_"Back3"', 'Clone_of_"Side3"'],  //Body 2
+        [resource.guitars[0].top, resource.guitars[0].back, resource.guitars[0].side], //Body 0
+        [resource.guitars[1].top, resource.guitars[1].back, resource.guitars[1].side], //Body 1
+        [resource.guitars[2].top, resource.guitars[2].back, resource.guitars[2].side],  //Body 2
       ];
 
       const getBody = (names) => {
@@ -122,25 +140,9 @@ async function vectaryViewer() {
 
       //MATERIALS ////////////////////////////////////////////////////
 
-      const material1 = {
-        name: "Wood",
-        roughness: 0.8,
-        metalness: 0.2,
-        map: 'files/wood.jpg'
-      }
-      const material2 = {
-        name: "Black",
-        color: "#FFFFFF",
-        roughness: 0.9,
-        metalness: 0.1,
-      }
-
-      const material3 = {
-        name: "Chocolate",
-        color: "#564327",
-        roughness: 0.9,
-        metalness: 0.1,
-      }
+      const material1 = resource.materials[0];
+      const material2 = resource.materials[1];
+      const material3 = resource.materials[2];
 
       //Create new materials
       dowina.createMaterial(material1);
