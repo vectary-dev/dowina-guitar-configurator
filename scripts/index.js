@@ -65,6 +65,11 @@ async function vectaryViewer() {
         steps[stepIndex-1].style.display = "block";  
         dots[stepIndex-1].className += " active";      
       } 
+
+      function setSelected(className) {
+        let elem = document.getElementsByClassName(className)[0].parentElement;
+        elem.className = "selected";
+      }
       
       function saveData (step, value) {
         localStorage.setItem(step, JSON.stringify(value));
@@ -93,6 +98,10 @@ async function vectaryViewer() {
         [resource.guitars[1].top, resource.guitars[1].back, resource.guitars[1].side], //Body 1
         [resource.guitars[2].top, resource.guitars[2].back, resource.guitars[2].side],  //Body 2
       ];
+
+      bodyPartsNames.forEach(body => {
+        setVisibilityMultiple(body, false);
+      })
 
       const getBody = (names) => {
         let body = [];
@@ -156,7 +165,7 @@ async function vectaryViewer() {
       //New materials
       let material = [
         allSceneMaterials[12].name, // Material 1 - Wood
-        allSceneMaterials[13].name, // Material 2 - Black
+        allSceneMaterials[13].name, // Material 2 - White
         allSceneMaterials[14].name  // Material 3 - Chocolate
       ];
 
@@ -164,24 +173,28 @@ async function vectaryViewer() {
     
       dowina.setCamera(camera[0]);
       dowina.setBackground('files/theaterBG.hdr');
-      //IF EXISTS, LOAD VALUES FROM LOCAL STORAGE
-      let loaded = '';
-      if (loadData('step1')) {
-        let loaded = loadData('step1');
-        setVisibilityMultiple(loaded, true);  
-      }
-      else {
-        setVisibilityMultiple(body1, true);
-        saveData ('step1', body1);
-      }
-      
 
-      console.log('loaded', loaded);
-      console.log('body1', body1);
-      setVisibilityMultiple(bodyPartsNames[0], true);
-      setVisibilityMultiple(bodyPartsNames[1], false);
-      setVisibilityMultiple(bodyPartsNames[2], false);
-      // setVisibilityMultiple(loaded, true);
+      //IF EXISTS, LOAD VALUES FROM LOCAL STORAGE
+      const loadFromLocalStorage = () => {
+        let loadedNames = [];
+        let loadedStep1 = loadData('step1');
+        loadedStep1.forEach(data => {
+          loadedNames.push(data.name)
+        });
+        setVisibilityMultiple(loadedNames, true);
+
+        let loadedStep2 = loadData('step2');
+        dowina.setMaterial(loadedNames[0], loadedStep2);
+
+        let loadedStep3 = loadData('step3');
+        dowina.setMaterial(loadedNames[1], loadedStep3);
+
+        let loadedStep4 = loadData('step4');
+        dowina.setMaterial(loadedNames[2], loadedStep4);
+      }
+
+      loadFromLocalStorage();
+
       goToStep(1);
 
       document.getElementById("next").addEventListener("click", function(event){
@@ -207,7 +220,8 @@ async function vectaryViewer() {
             setVisibilityMultiple(bodyPartsNames[0], true);
             setVisibilityMultiple(bodyPartsNames[1], false);
             setVisibilityMultiple(bodyPartsNames[2], false);
-            saveData ('step1', body2);
+            saveData ('step1', body1);
+            setSelected("body0");
           }
           if ( event.target.classList.contains( 'body1' ) ) {
             changeBody(body2);                        
@@ -215,13 +229,15 @@ async function vectaryViewer() {
             setVisibilityMultiple(bodyPartsNames[1], true);
             setVisibilityMultiple(bodyPartsNames[2], false);
             saveData ('step1', body2);
+            setSelected("body1");
           }
           if ( event.target.classList.contains( 'body2' ) ) {
             changeBody(body3);                        
             setVisibilityMultiple(bodyPartsNames[0], false);
             setVisibilityMultiple(bodyPartsNames[1], false);
             setVisibilityMultiple(bodyPartsNames[2], true);
-            saveData ('step1', body3);                            
+            saveData ('step1', body3);
+            setSelected("body2");
           }          
         }
         //Step2
@@ -230,14 +246,17 @@ async function vectaryViewer() {
           if ( event.target.classList.contains( 'material0' ) ) {             
             dowina.setMaterial(currentElement.name, material[0]);
             saveData ('step2', material[0]);
+            setSelected("step2 material0");
           }
           if ( event.target.classList.contains( 'material1' ) ) { 
             dowina.setMaterial(currentElement.name, material[1]);
             saveData ('step2', material[1]);
+            setSelected("step2 material1");
           }
           if ( event.target.classList.contains( 'material2' ) ) {             
             dowina.setMaterial(currentElement.name, material[2]);
             saveData ('step2', material[2]);
+            setSelected("step2 material2");
           }          
         }        
         //Step3
@@ -246,14 +265,17 @@ async function vectaryViewer() {
           if ( event.target.classList.contains( 'material0' ) ) {            
             dowina.setMaterial(currentElement.name, material[0]);
             saveData ('step3', material[0]);
+            setSelected("step3 material0");
           }
           if ( event.target.classList.contains( 'material1' ) ) {             
             dowina.setMaterial(currentElement.name, material[1]);
             saveData ('step3', material[1]);
+            setSelected("step3 material1");
           }
           if ( event.target.classList.contains( 'material2' ) ) {
             dowina.setMaterial(currentElement.name, material[2]);
             saveData ('step3', material[2]);
+            setSelected("step3 material2");
           }          
         }
         //Step4
@@ -262,14 +284,17 @@ async function vectaryViewer() {
           if ( event.target.classList.contains( 'material0' ) ) { 
             dowina.setMaterial(currentElement.name, material[0]);
             saveData ('step4', material[0]);
+            setSelected("step4 material0");
           }
           if ( event.target.classList.contains( 'material1' ) ) { 
             dowina.setMaterial(currentElement.name, material[1]);
             saveData ('step4', material[1]);
+            setSelected("step4 material1");
           }
           if ( event.target.classList.contains( 'material2' ) ) { 
             dowina.setMaterial(currentElement.name, material[2]);
             saveData ('step4', material[2]);
+            setSelected("step4 material2");
           }          
         }
         //Step5
