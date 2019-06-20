@@ -79,7 +79,7 @@ a {
         .dot {  
           height: 15px;
           width: 15px;
-          margin: -8px 10px 8px 10px;          
+          margin: -8px 3% 8px 3%;
           background-image: url("../files/dot.svg");
           background-repeat: no-repeat;
           display: inline-block;
@@ -117,6 +117,7 @@ a {
             &.selected {
               background: #363636;
               border: 1px solid #404040;
+              color: white;
             }
           }
           &.thumbnails {
@@ -141,7 +142,8 @@ a {
   
     .buttons {
       @include clearfix;
-      
+      margin-bottom:20px;
+      bottom:10px;
       .button {
         &#next {
           border:1px solid $green;
@@ -150,6 +152,7 @@ a {
         }
         float:left;
         padding:10px 50px;
+        margin: 0 20px;
         color: white;
       }
 
