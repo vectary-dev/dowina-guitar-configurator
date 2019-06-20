@@ -5,12 +5,13 @@ html, body {
 
 body {
   font-family: sans-serif;
-  color: white;
+  color: #939393;
   min-width: 800px;
 }
 
 a {
-  color: green;
+  color: #939393;
+  text-decoration: none;
 }
 
 #app {
@@ -24,6 +25,7 @@ a {
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
   width: 100%;
+  min-width: 1000px;
 }
 
 #app #viewer {
@@ -31,6 +33,7 @@ a {
       -ms-flex: 2 0 0px;
           flex: 2 0 0;
   height: 100vh;
+  min-width: 600px;
 }
 
 #app #menu {
@@ -41,6 +44,7 @@ a {
   background: #272727;
   -webkit-box-shadow: -10px 0px 30px -20px black;
           box-shadow: -10px 0px 30px -20px black;
+  min-width: 400px;
 }
 
 #app #menu #steps {
@@ -49,12 +53,13 @@ a {
 
 #app #menu #steps .dots {
   text-align: center;
+  margin: 30px 0;
 }
 
 #app #menu #steps .dots .dot {
   height: 15px;
   width: 15px;
-  margin: 0 2px;
+  margin: 0 10px;
   background-color: #bbb;
   border-radius: 50%;
   display: inline-block;
@@ -63,7 +68,7 @@ a {
 }
 
 #app #menu #steps .dots .dot.active {
-  background-color: green;
+  background-color: #00B850;
 }
 
 #app #menu #steps .step {
@@ -73,20 +78,42 @@ a {
   animation-duration: 1.5s;
 }
 
+#app #menu #steps .step h2 {
+  color: #00B850;
+  font-size: 21px;
+}
+
+#app #menu #steps .step p {
+  margin: 30px 0 30px 0;
+}
+
 #app #menu #steps .step ul {
-  height: 200px;
+  height: 400px;
   overflow: scroll;
+  margin: 0;
+  padding: 0;
 }
 
 #app #menu #steps .step ul li {
   list-style: none;
 }
 
+#app #menu #steps .step ul li img {
+  width: 100%;
+  height: auto;
+}
+
+#app #menu #steps .step ul li.selected {
+  background: #363636;
+  border: 1px solid #404040;
+}
+
 #app #menu #steps .step ul.thumbnails li {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
   text-align: center;
-  width: 33%;
+  width: 50%;
   padding: 10px;
-  margin: 10px;
   float: left;
 }
 
@@ -108,9 +135,9 @@ a {
 }
 
 #app #menu .buttons .button#next {
-  border: 1px solid green;
+  border: 1px solid #00B850;
   float: right;
-  color: green;
+  color: #00B850;
 }
 
 @-webkit-keyframes fade {
