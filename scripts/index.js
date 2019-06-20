@@ -1,3 +1,5 @@
+import { VctrApi } from "https://www.vectary.com/embed/viewer/v1/scripts/api/api.js";
+
 async function vectaryViewer() {
   console.log("Example client script running..");
 
@@ -94,9 +96,29 @@ async function vectaryViewer() {
       };
 
       let bodyPartsNames = [
-        [resource.guitars[0].top, resource.guitars[0].back, resource.guitars[0].side], //Body 0
-        [resource.guitars[1].top, resource.guitars[1].back, resource.guitars[1].side], //Body 1
-        [resource.guitars[2].top, resource.guitars[2].back, resource.guitars[2].side],  //Body 2
+        [
+          resource.guitars[0].front, 
+          resource.guitars[0].back, 
+          resource.guitars[0].side,
+          resource.guitars[0].rosette,
+          resource.guitars[0].backDetail, 
+          resource.guitars[0].frontDetailFront, 
+          resource.guitars[0].frontDetailSide, 
+          resource.guitars[0].sideDetail, 
+          resource.guitars[0].hole, 
+
+        ], //Body 0
+        [
+          resource.guitars[1].front, 
+          resource.guitars[1].back, 
+          resource.guitars[1].side,
+          resource.guitars[1].rosette,
+          resource.guitars[1].backDetail, 
+          resource.guitars[1].frontDetailFront, 
+          resource.guitars[1].frontDetailSide, 
+          resource.guitars[1].sideDetail, 
+          resource.guitars[1].hole,
+        ], //Body 1
       ];
 
       bodyPartsNames.forEach(body => {
@@ -114,20 +136,25 @@ async function vectaryViewer() {
 
       const body1 = await getBody(bodyPartsNames[0]);
       const body2 = await getBody(bodyPartsNames[1]);
-      const body3 = await getBody(bodyPartsNames[2]);
 
       console.log('body1', body1);
 
-      //Set default body and Top element
+      //Set default body and Front element
       let currentBody = body1;
       let currentElement = body1[0];
 
       //Switch body
       const changeBody = (body) => {
         currentBody = body;
-        bodyTop = body[0];
-        bodyBack = body[1];
-        bodySide = body[2];
+        constbodyFront = body[0];
+        bodySide = body[1];
+        bodyBack = body[2];
+        bodyFrontDetailFront = body[3];
+        bodyFrontDetailSide = body[4];
+        bodyBackDetail = body[5];
+        bodySideDetail = body[6];
+        bodyHole = body[6];
+        bodyRosette = body[7];
       };
 
       //CAMERAS ////////////////////////////////////////////////////
@@ -135,23 +162,36 @@ async function vectaryViewer() {
       const cameras = await dowina.getCameras();
       console.log("Cameras", cameras);
 
+      const bodyCam = await dowina.getCamerasByName("BodyCam");
+      const frontCam = await dowina.getCamerasByName("FrontCam");
+      const sideCam = await dowina.getCamerasByName("SideCam");
+      const backCam = await dowina.getCamerasByName("BackCam");
+      const frontDetailCam = await dowina.getCamerasByName("FrontDetailCam");
+      const backDetailCam = await dowina.getCamerasByName("BackDetailCam");
+      const sideDetailCam = await dowina.getCamerasByName("SideDetailCam");
+      const rosetteCam = await dowina.getCamerasByName("RosetteCam");
+
       //Define cameras for each step, for easy switching
       let camera = [
-        cameras[1].name, //Camera 0 for Step 1 Default
-        cameras[1].name, //Camera 1 for Step 2 Top
-        cameras[2].name, //Camera 2 for Step 3 Back
-        cameras[4].name, //Camera 3 for Step 4 Side
-        cameras[3].name, //Camera 4 for Step 5 Rosette
-        cameras[5].name, //Camera 5 for Step 6 Electronics
-        cameras[1].name, //Camera 6 for Step 7 Bag
-        cameras[1].name  //Camera 7 for Step 8 Summary        
+        bodyCam[0].name,
+        frontCam[0].name,
+        backCam[0].name,
+        sideCam[0].name,
+        rosetteCam[0].name,
+        backDetailCam[0].name,
+        frontDetailCam[0].name,
+        sideDetailCam[0].name
       ];
 
       //MATERIALS ////////////////////////////////////////////////////
 
+      const mat1 = await dowina.getMaterialsByName("Front Material2");
+      const mat2 = await dowina.getMaterialsByName("Hole Material")
+
       const material1 = resource.materials[0];
       const material2 = resource.materials[1];
       const material3 = resource.materials[2];
+      const material4 = mat2[0];
 
       //Create new materials
       dowina.createMaterial(material1);
@@ -160,18 +200,19 @@ async function vectaryViewer() {
 
       //Load all scene materials
       const allSceneMaterials = await dowina.getMaterials();
-      console.log("Materials", allSceneMaterials);    
+      console.log("Materials", allSceneMaterials);
 
       //New materials
       let material = [
-        allSceneMaterials[12].name, // Material 1 - Wood
-        allSceneMaterials[13].name, // Material 2 - White
-        allSceneMaterials[14].name  // Material 3 - Chocolate
+        material1.name,
+        material4.name,
+        material2.name,
+        material3.name
       ];
 
       //Init values
     
-      dowina.setCamera(camera[0]);
+      dowina.setCamera(camera[cameras.length-1]);
       dowina.setBackground('files/theaterBG.hdr');
 
       //IF EXISTS, LOAD VALUES FROM LOCAL STORAGE
@@ -199,7 +240,7 @@ async function vectaryViewer() {
 
       document.getElementById("next").addEventListener("click", function(event){
         changeSteps(1);
-        dowina.setCamera(camera[stepIndex]);
+        dowina.setCamera(camera[stepIndex-1]);
         //IF EXISTS, LOAD VALUES FROM LOCAL STORAGE
         event.preventDefault();
       });
@@ -216,29 +257,27 @@ async function vectaryViewer() {
         //Step1
         if ( event.target.classList.contains( 'step1' ) ) {
           if ( event.target.classList.contains( 'body0' ) ) {
-            changeBody(body1);   
+            currentBody = body1;
             setVisibilityMultiple(bodyPartsNames[0], true);
             setVisibilityMultiple(bodyPartsNames[1], false);
-            setVisibilityMultiple(bodyPartsNames[2], false);
             saveData ('step1', body1);
             setSelected("body0");
           }
           if ( event.target.classList.contains( 'body1' ) ) {
-            changeBody(body2);                        
+            currentBody = body2;
             setVisibilityMultiple(bodyPartsNames[0], false);
             setVisibilityMultiple(bodyPartsNames[1], true);
-            setVisibilityMultiple(bodyPartsNames[2], false);
             saveData ('step1', body2);
             setSelected("body1");
           }
-          if ( event.target.classList.contains( 'body2' ) ) {
-            changeBody(body3);                        
-            setVisibilityMultiple(bodyPartsNames[0], false);
-            setVisibilityMultiple(bodyPartsNames[1], false);
-            setVisibilityMultiple(bodyPartsNames[2], true);
-            saveData ('step1', body3);
-            setSelected("body2");
-          }          
+          // if ( event.target.classList.contains( 'body2' ) ) {
+          //   changeBody(body3);                        
+          //   setVisibilityMultiple(bodyPartsNames[0], false);
+          //   setVisibilityMultiple(bodyPartsNames[1], false);
+          //   setVisibilityMultiple(bodyPartsNames[2], true);
+          //   saveData ('step1', body3);
+          //   setSelected("body2");
+          // }          
         }
         //Step2
         if ( event.target.classList.contains( 'step2' ) ) {
@@ -252,12 +291,7 @@ async function vectaryViewer() {
             dowina.setMaterial(currentElement.name, material[1]);
             saveData ('step2', material[1]);
             setSelected("step2 material1");
-          }
-          if ( event.target.classList.contains( 'material2' ) ) {             
-            dowina.setMaterial(currentElement.name, material[2]);
-            saveData ('step2', material[2]);
-            setSelected("step2 material2");
-          }          
+          }       
         }        
         //Step3
         if ( event.target.classList.contains( 'step3' ) ) {
@@ -271,12 +305,7 @@ async function vectaryViewer() {
             dowina.setMaterial(currentElement.name, material[1]);
             saveData ('step3', material[1]);
             setSelected("step3 material1");
-          }
-          if ( event.target.classList.contains( 'material2' ) ) {
-            dowina.setMaterial(currentElement.name, material[2]);
-            saveData ('step3', material[2]);
-            setSelected("step3 material2");
-          }          
+          }        
         }
         //Step4
         if ( event.target.classList.contains( 'step4' ) ) {
@@ -290,11 +319,6 @@ async function vectaryViewer() {
             dowina.setMaterial(currentElement.name, material[1]);
             saveData ('step4', material[1]);
             setSelected("step4 material1");
-          }
-          if ( event.target.classList.contains( 'material2' ) ) { 
-            dowina.setMaterial(currentElement.name, material[2]);
-            saveData ('step4', material[2]);
-            setSelected("step4 material2");
           }          
         }
         //Step5
@@ -322,7 +346,7 @@ async function vectaryViewer() {
     }
   }
 
-  let dowina = new vctr.VctrApi("dowina", testGlobalErrHandler);
+  let dowina = new VctrApi("dowina", testGlobalErrHandler);
 
   try {
     await dowina.init();
@@ -332,3 +356,4 @@ async function vectaryViewer() {
   }
 }
 
+vectaryViewer();

@@ -7,31 +7,26 @@
   <title>Guitar Configurator</title>
   
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/webcomponentsjs/2.2.10/webcomponents-loader.js"></script>
-  <script type="text/javascript" src="https://www.vectary.com/embed/viewer/v1/scripts/api/api.js"></script>
-  <script type="text/javascript" src="scripts/index.js"></script>
+  <script type="module" src="https://www.vectary.com/embed/viewer/v1/scripts/vctr-viewer.js"></script>
+  <script type="module" src="scripts/index.js"></script>
   <link rel="stylesheet" href="styles/main.css">
 </head>
 
-<body onload="vectaryViewer()">
+<body>
   <div id="app">
 
     <div id="viewer">  
       <vctr-viewer 
         id="dowina" 
-        model="c3059bef-0a9a-4737-bcad-d2848d195778" 
+        model="04a73a68-de46-4873-baed-e77e6a142905" 
         env="default" 
         showPreloader="0" 
         gestureHandling="superior" 
         showGesturePrompts=0 
         zoom=1
         rotateY=1 
-        panX=0 
-        panY=0 
-        enableApi="1" 
-        minAzimuth=-190 
-        maxAzimuth=90 
-        minPolar=-80 
-        maxPolar=90
+        pan=0
+        enableApi="1"
       >
       </vctr-viewer>
     </div>
@@ -55,20 +50,18 @@
           <h2>Choose shape</h2>
           <p>Lorem ipsum...</p>
           <ul class="thumbnails">
-            <li><img src="files/thumb@2x.png"><a href="#" class="step1 body0">Dreadnough</a></li>
-            <li><img src="files/thumb@2x.png"><a href="#" class="step1 body1">Dreadnough cutaway</a></li>
-            <li><img src="files/thumb@2x.png"><a href="#" class="step1 body2">Hybrid cutaway</a></li>
+            <li><img src="files/thumb@2x.png"><a href="#" class="step1 body0">Body 0</a></li>
+            <li><img src="files/thumb@2x.png"><a href="#" class="step1 body1">Body 1</a></li>
           </ul>
           
         </div>
         
         <div class="step">
-          <h2>Choose top</h2>
+          <h2>Choose front</h2>
           <p>Lorem ipsum...</p>
           <ul class="thumbnails">
-            <li><a href="#" class="step2 material0">Wood</a></li>
-            <li><a href="#" class="step2 material1">White</a></li>
-            <li><a href="#" class="step2 material2">Brown</a></li>
+            <li><a href="#" class="step2 material0">White Wood</a></li>
+            <li><a href="#" class="step2 material1">Dark Fine</a></li>
           </ul>
         </div>
         
@@ -76,9 +69,8 @@
           <h2>Choose back</h2>
           <p>Lorem ipsum...</p>
           <ul class="thumbnails">
-            <li><a href="#" class="step3 material0">Wood</a></li>
-            <li><a href="#" class="step3 material1">White</a></li>
-            <li><a href="#" class="step3 material2">Brown</a></li>
+            <li><a href="#" class="step3 material0">White Wood</a></li>
+            <li><a href="#" class="step3 material1">Dark Fine</a></li>
           </ul>
         </div>
 
@@ -87,8 +79,7 @@
           <p>Lorem ipsum...</p>
           <ul class="thumbnails">
             <li><a href="#" class="step4 material0">Wood</a></li>
-            <li><a href="#" class="step4 material1">White</a></li>
-            <li><a href="#" class="step4 material2"><Brown></Brown></a></li>
+            <li><a href="#" class="step4 material1">Dark</a></li>
           </ul>
         </div>
 
@@ -96,31 +87,41 @@
           <h2>Choose rosette</h2>
           <p>Lorem ipsum...</p>
           <ul class="thumbnails">
-            <li><a href="#" class="">Wood</a></li>
-            <li><a href="#" class="">XXX</a></li>
-            <li><a href="#" class="">YYY</a></li>
+            <li><a href="#" class="step5 material0">Wood</a></li>
+            <li><a href="#" class="step5 material1">XXX</a></li>
+            <li><a href="#" class="step5 material2">YYY</a></li>
           </ul>
         </div>
 
         <div class="step">
-          <h2>Choose electronics</h2>
+          <h2>Choose stripe</h2>
           <p>Lorem ipsum...</p>
           <ul>
-            <li><a href="#" id="">Wood</a></li>
-            <li><a href="#" id="">XXX</a></li>
-            <li><a href="#" id="">YYY</a></li>
+            <li><a href="#" id="step6 material0">Wood</a></li>
+            <li><a href="#" id="step6 material1">XXX</a></li>
+            <li><a href="#" id="step6 material2">YYY</a></li>
           </ul>
         </div>
 
         <div class="step">
-          <h2>Choose bag</h2>
+          <h2>Choose front detail</h2>
           <p>Lorem ipsum...</p>
           <ul>
-            <li><a href="#" id="">1</a></li>
-            <li><a href="#" id="">2</a></li>
-            <li><a href="#" id="">3</a></li>
+            <li><a href="#" id="step7 material0">1</a></li>
+            <li><a href="#" id="step7 material1">2</a></li>
+            <li><a href="#" id="step7 material2">3</a></li>
           </ul>
-        </div>        
+        </div> 
+        
+        <div class="step">
+          <h2>Choose side detail</h2>
+          <p>Lorem ipsum...</p>
+          <ul>
+            <li><a href="#" id="step8 material0">1</a></li>
+            <li><a href="#" id="step8 material1">2</a></li>
+            <li><a href="#" id="step8 material2">3</a></li>
+          </ul>
+        </div>    
 
         <div class="step">
           <h2>Summary</h2>
