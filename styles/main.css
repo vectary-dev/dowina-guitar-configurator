@@ -1,12 +1,39 @@
+/* Fading animation */
+@-webkit-keyframes fade {
+  from {
+    opacity: .4;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fade {
+  from {
+    opacity: .4;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Mixins */
+* {
+  -webkit-box-sizing: borderbox;
+          box-sizing: borderbox;
+  margin: 0;
+  padding: 0;
+}
+
 html, body {
   margin: 0;
   padding: 0;
+  height: 100%;
 }
 
 body {
   font-family: sans-serif;
   color: #939393;
-  min-width: 800px;
 }
 
 a {
@@ -18,13 +45,11 @@ a {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  height: 100%;
   -webkit-box-orient: horizontal;
   -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
-  width: 100%;
+      -ms-flex-flow: row wrap;
+          flex-flow: row wrap;
   min-width: 1000px;
 }
 
@@ -32,7 +57,6 @@ a {
   -webkit-box-flex: 2;
       -ms-flex: 2 0 0px;
           flex: 2 0 0;
-  height: 100vh;
   min-width: 600px;
 }
 
@@ -40,35 +64,46 @@ a {
   -webkit-box-flex: 1;
       -ms-flex: 1 0 0px;
           flex: 1 0 0;
-  height: 100vh;
   background: #272727;
   -webkit-box-shadow: -10px 0px 30px -20px black;
           box-shadow: -10px 0px 30px -20px black;
   min-width: 400px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  min-height: 100vh;
 }
 
 #app #menu #steps {
   padding: 20px;
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
 }
 
 #app #menu #steps .dots {
   text-align: center;
   margin: 30px 0;
+  border-top: 1px solid #4A3F3F;
 }
 
 #app #menu #steps .dots .dot {
   height: 15px;
   width: 15px;
-  margin: 0 10px;
-  background-color: #bbb;
-  border-radius: 50%;
+  margin: -8px 10px 8px 10px;
+  background-image: url("../files/dot.svg");
+  background-repeat: no-repeat;
   display: inline-block;
   -webkit-transition: background-color 0.6s ease;
   transition: background-color 0.6s ease;
 }
 
 #app #menu #steps .dots .dot.active {
-  background-color: #00B850;
+  background-color: white;
 }
 
 #app #menu #steps .step {
@@ -123,9 +158,10 @@ a {
   display: table;
 }
 
-#app #menu .buttons {
-  position: fixed;
-  bottom: 10px;
+#app #menu .buttons:after {
+  content: "";
+  display: table;
+  clear: both;
 }
 
 #app #menu .buttons .button {
@@ -139,24 +175,4 @@ a {
   float: right;
   color: #00B850;
 }
-
-@-webkit-keyframes fade {
-  from {
-    opacity: .4;
-  }
-  to {
-    opacity: 1;
-  }
-}
-
-@keyframes fade {
-  from {
-    opacity: .4;
-  }
-  to {
-    opacity: 1;
-  }
-}
-
-/* Fading animation */
 /*# sourceMappingURL=main.css.map */
