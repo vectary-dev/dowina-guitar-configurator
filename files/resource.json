@@ -24,7 +24,7 @@
             "map": "files/wood.jpg"
         },
         {
-            "name": "Black",
+            "name": "White",
             "color": "#FFFFFF",
             "roughness": 0.9,
             "metalness": 0.1
