@@ -1,118 +1,4 @@
-html, body {
-  margin: 0;
-  padding: 0;
-}
-
-body {
-  font-family: sans-serif;
-  color: white;
-  min-width: 800px;
-}
-
-a {
-  color: green;
-}
-
-#app {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
-  width: 100%;
-}
-
-#app #viewer {
-  -webkit-box-flex: 2;
-      -ms-flex: 2 0 0px;
-          flex: 2 0 0;
-  height: 100vh;
-}
-
-#app #menu {
-  -webkit-box-flex: 1;
-      -ms-flex: 1 0 0px;
-          flex: 1 0 0;
-  height: 100vh;
-  background: #272727;
-  -webkit-box-shadow: -10px 0px 30px -20px black;
-          box-shadow: -10px 0px 30px -20px black;
-}
-
-#app #menu #steps {
-  padding: 20px;
-}
-
-#app #menu #steps .dots {
-  text-align: center;
-}
-
-#app #menu #steps .dots .dot {
-  height: 15px;
-  width: 15px;
-  margin: 0 2px;
-  background-color: #bbb;
-  border-radius: 50%;
-  display: inline-block;
-  -webkit-transition: background-color 0.6s ease;
-  transition: background-color 0.6s ease;
-}
-
-#app #menu #steps .dots .dot.active {
-  background-color: green;
-}
-
-#app #menu #steps .step {
-  -webkit-animation-name: fade;
-  -webkit-animation-duration: 1.5s;
-  animation-name: fade;
-  animation-duration: 1.5s;
-}
-
-#app #menu #steps .step ul {
-  height: 200px;
-  overflow: scroll;
-}
-
-#app #menu #steps .step ul li {
-  list-style: none;
-}
-
-#app #menu #steps .step ul.thumbnails li {
-  text-align: center;
-  width: 33%;
-  padding: 10px;
-  margin: 10px;
-  float: left;
-}
-
-#app #menu #steps .step ul::after {
-  content: "";
-  clear: both;
-  display: table;
-}
-
-#app #menu .buttons {
-  position: fixed;
-  bottom: 10px;
-}
-
-#app #menu .buttons .button {
-  float: left;
-  padding: 10px 50px;
-  color: white;
-}
-
-#app #menu .buttons .button#next {
-  border: 1px solid green;
-  float: right;
-  color: green;
-}
-
+/* Fading animation */
 @-webkit-keyframes fade {
   from {
     opacity: .4;
@@ -131,5 +17,169 @@ a {
   }
 }
 
-/* Fading animation */
+/* Mixins */
+* {
+  -webkit-box-sizing: borderbox;
+          box-sizing: borderbox;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+body {
+  font-family: sans-serif;
+  color: #939393;
+}
+
+a {
+  color: #939393;
+  text-decoration: none;
+}
+
+#app {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  height: 100%;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: row wrap;
+          flex-flow: row wrap;
+  min-width: 1000px;
+}
+
+#app #viewer {
+  -webkit-box-flex: 2;
+      -ms-flex: 2 0 0px;
+          flex: 2 0 0;
+  min-width: 600px;
+}
+
+#app #menu {
+  -webkit-box-flex: 1;
+      -ms-flex: 1 0 0px;
+          flex: 1 0 0;
+  background: #272727;
+  -webkit-box-shadow: -10px 0px 30px -20px black;
+          box-shadow: -10px 0px 30px -20px black;
+  min-width: 400px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  min-height: 100vh;
+}
+
+#app #menu #steps {
+  padding: 20px;
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+}
+
+#app #menu #steps .dots {
+  text-align: center;
+  margin: 30px 0;
+  border-top: 1px solid #4A3F3F;
+}
+
+#app #menu #steps .dots .dot {
+  height: 15px;
+  width: 15px;
+  margin: -8px 3% 8px 3%;
+  background-image: url("../files/dot.svg");
+  background-repeat: no-repeat;
+  display: inline-block;
+  -webkit-transition: background-color 0.6s ease;
+  transition: background-color 0.6s ease;
+}
+
+#app #menu #steps .dots .dot.active {
+  background-color: white;
+}
+
+#app #menu #steps .step {
+  -webkit-animation-name: fade;
+  -webkit-animation-duration: 1.5s;
+  animation-name: fade;
+  animation-duration: 1.5s;
+}
+
+#app #menu #steps .step h2 {
+  color: #00B850;
+  font-size: 21px;
+}
+
+#app #menu #steps .step p {
+  margin: 30px 0 30px 0;
+}
+
+#app #menu #steps .step ul {
+  height: 400px;
+  overflow: scroll;
+  margin: 0;
+  padding: 0;
+}
+
+#app #menu #steps .step ul li {
+  list-style: none;
+}
+
+#app #menu #steps .step ul li img {
+  width: 100%;
+  height: auto;
+}
+
+#app #menu #steps .step ul li.selected {
+  background: #363636;
+  border: 1px solid #404040;
+  color: white;
+}
+
+#app #menu #steps .step ul.thumbnails li {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  text-align: center;
+  width: 50%;
+  padding: 10px;
+  float: left;
+}
+
+#app #menu #steps .step ul::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+#app #menu .buttons {
+  margin-bottom: 20px;
+  bottom: 10px;
+}
+
+#app #menu .buttons:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+#app #menu .buttons .button {
+  float: left;
+  padding: 10px 50px;
+  margin: 0 20px;
+  color: white;
+}
+
+#app #menu .buttons .button#next {
+  border: 1px solid #00B850;
+  float: right;
+  color: #00B850;
+}
 /*# sourceMappingURL=main.css.map */
