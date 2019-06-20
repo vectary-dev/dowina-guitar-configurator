@@ -184,14 +184,11 @@ async function vectaryViewer() {
       ];
 
       //MATERIALS ////////////////////////////////////////////////////
-
-      const mat1 = await dowina.getMaterialsByName("Front Material2");
-      const mat2 = await dowina.getMaterialsByName("Hole Material")
+      // MATERIAL PROPERTIES: https://threejs.org/docs/index.html#api/en/materials/MeshStandardMaterial
 
       const material1 = resource.materials[0];
       const material2 = resource.materials[1];
       const material3 = resource.materials[2];
-      const material4 = mat2[0];
 
       //Create new materials
       dowina.createMaterial(material1);
@@ -205,13 +202,12 @@ async function vectaryViewer() {
       //New materials
       let material = [
         material1.name,
-        material4.name,
         material2.name,
         material3.name
       ];
 
       //Init values
-    
+
       dowina.setCamera(camera[cameras.length-1]);
       dowina.setBackground('files/theaterBG.hdr');
 
