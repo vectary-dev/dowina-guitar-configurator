@@ -1,39 +1,47 @@
 {
     "guitars": [
         {
-            "top": "Clone_of_\"Top1\"",
-            "side": "Clone_of_\"Back1\"",
-            "back": "Clone_of_\"Side1\""
+            "front": "Front",
+            "side": "Back",
+            "back": "Side",
+            "frontDetailFront": "FrontDetailFront",
+            "frontDetailSide": "FrontDetailSide",
+            "backDetail": "BackDetail",
+            "sideDetail": "SideDetail",
+            "hole": "Hole",
+            "rosette": "Rosette"
         },
         {
-            "top": "Clone_of_\"Top2\"",
-            "side": "Clone_of_\"Back2\"",
-            "back": "Clone_of_\"Side2\""
-        },
-        {
-            "top": "Clone_of_\"Top3\"",
-            "side": "Clone_of_\"Back3\"",
-            "back": "Clone_of_\"Side3\""
+            "front": "Front2",
+            "side": "Back2",
+            "back": "Side2",
+            "frontDetailFront": "FrontDetailFront2",
+            "frontDetailSide": "FrontDetailSide2",
+            "backDetail": "BackDetail2",
+            "sideDetail": "SideDetail2",
+            "hole": "Hole2",
+            "rosette": "Rosette2"
         }
     ],
     "materials": [
         {   
-            "name": "Wood",
+            "name": "White Wood",
             "roughness": 0.8,
             "metalness": 0.2,
             "map": "files/wood.jpg"
         },
-        {
-            "name": "White",
-            "color": "#FFFFFF",
-            "roughness": 0.9,
-            "metalness": 0.1
+        {   
+            "name": "Blue Rosette",
+            "roughness": 0.8,
+            "metalness": 0.2,
+            "map": "files/rosette.png"
         },
         {
-            "name": "Chocolate",
-            "color": "#564327",
-            "roughness": 0.9,
-            "metalness": 0.1
+            "name": "Yellow Rosette",
+            "color": "#eef442",
+            "roughness": 0.8,
+            "metalness": 0.2,
+            "map": "files/rosette.png"
         }
     ]
 }
