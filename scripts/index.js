@@ -143,20 +143,6 @@ async function vectaryViewer() {
       let currentBody = body1;
       let currentElement = body1[0];
 
-      //Switch body
-      const changeBody = (body) => {
-        currentBody = body;
-        constbodyFront = body[0];
-        bodySide = body[1];
-        bodyBack = body[2];
-        bodyFrontDetailFront = body[3];
-        bodyFrontDetailSide = body[4];
-        bodyBackDetail = body[5];
-        bodySideDetail = body[6];
-        bodyHole = body[6];
-        bodyRosette = body[7];
-      };
-
       //CAMERAS ////////////////////////////////////////////////////
 
       const cameras = await dowina.getCameras();
@@ -230,7 +216,12 @@ async function vectaryViewer() {
         dowina.setMaterial(loadedNames[2], loadedStep4);
       }
 
-      loadFromLocalStorage();
+      if (localStorage.length === 0) {
+        currentBody = body1;
+        setVisibilityMultiple(bodyPartsNames[0], true);
+      } else {
+        loadFromLocalStorage();
+      }
 
       goToStep(1);
 
