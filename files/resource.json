@@ -1,6 +1,6 @@
 {
-    "guitars": [
-        {
+    "objects": {
+        "guitar1": {
             "front": "Front",
             "side": "Back",
             "back": "Side",
@@ -11,7 +11,7 @@
             "hole": "Hole",
             "rosette": "Rosette"
         },
-        {
+        "guitar2": {
             "front": "Front2",
             "side": "Back2",
             "back": "Side2",
@@ -22,26 +22,58 @@
             "hole": "Hole2",
             "rosette": "Rosette2"
         }
-    ],
-    "materials": [
-        {   
+    },
+    "materials": {
+        "whiteWood": {
             "name": "White Wood",
             "roughness": 0.8,
             "metalness": 0.2,
             "map": "files/wood.jpg"
         },
-        {   
+        "blueRosette": {
             "name": "Blue Rosette",
             "roughness": 0.8,
             "metalness": 0.2,
             "map": "files/rosette.png"
         },
-        {
+        "yellowRosette": {
             "name": "Yellow Rosette",
             "color": "#eef442",
             "roughness": 0.8,
             "metalness": 0.2,
             "map": "files/rosette.png"
         }
-    ]
+    },
+    "cameras": {
+        "bodyCam": {
+            "name": "BodyCam"
+        },
+        "frontCam": {
+            "name": "FrontCam"
+        },
+        "sideCam": {
+            "name": "SideCam"
+        },
+        "backCam": {
+            "name": "BackCam"
+        },
+        "frontDetailCam": {
+            "name": "FrontDetailCam"
+        },
+        "backDetailCam": {
+            "name": "BackDetailCam"
+        },
+        "sideDetailCam": {
+            "name": "SideDetailCam"
+        },
+        "rosetteCam": {
+            "name": "RosetteCam"
+        }
+    },
+    "backgrounds" : {
+        "theater": {
+            "name": "Theater",
+            "path": "files/theaterBG.hdr"
+        }
+    }
 }
