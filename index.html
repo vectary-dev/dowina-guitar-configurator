@@ -2,144 +2,135 @@
 <html lang="en">
 
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Guitar Configurator</title>
-  
-  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/webcomponentsjs/2.2.10/webcomponents-loader.js"></script>
-  <script type="module" src="https://www.vectary.com/embed/viewer/v1/scripts/vctr-viewer.js"></script>
-  <script type="module" src="scripts/index.js"></script>
-  <link rel="stylesheet" href="styles/main.css">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guitar Configurator</title>
+
+    <script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/webcomponentsjs/2.2.10/webcomponents-loader.js"></script>
+    <script type="module" src="https://www.vectary.com/embed/viewer/v1/scripts/vctr-viewer.js"></script>
+    <script type="module" src="scripts/index.js"></script>
+    <link rel="stylesheet" href="styles/main.css">
 </head>
 
 <body>
-  <div id="app">
+    <div id="app">
 
-    <div id="viewer">  
-      <vctr-viewer 
-        id="dowina" 
-        model="04a73a68-de46-4873-baed-e77e6a142905" 
-        env="default" 
-        showPreloader="0" 
-        gestureHandling="superior" 
-        showGesturePrompts=0 
-        zoom=1
-        rotateY=1 
-        pan=0
-        enableApi="1"
-      >
-      </vctr-viewer>
+        <div id="viewer">
+            <vctr-viewer id="dowina" model="04a73a68-de46-4873-baed-e77e6a142905" env="default" showPreloader="0"
+                gestureHandling="superior" showGesturePrompts=0 zoom=1 rotateY=1 pan=0 enableApi="1">
+            </vctr-viewer>
+        </div>
+
+        <div id="menu">
+
+            <div id="steps">
+
+                <div class="dots">
+                    <span class="dot"></span>
+                    <span class="dot"></span>
+                    <span class="dot"></span>
+                    <span class="dot"></span>
+                    <span class="dot"></span>
+                    <span class="dot"></span>
+                    <span class="dot"></span>
+                    <span class="dot"></span>
+                    <span class="dot"></span>
+                </div>
+
+                <div id="step1" class="step">
+                    <h2>Choose shape</h2>
+                    <p>Lorem ipsum...</p>
+                    <ul class="thumbnails">
+                        <li><img src="files/thumb@2x.png"><a href="#" class="body0">Body 0</a></li>
+                        <li><img src="files/thumb@2x.png"><a href="#" class="body1">Body 1</a></li>
+                    </ul>
+
+                </div>
+
+                <div id="step2" class="step">
+                    <h2>Choose front</h2>
+                    <p>Lorem ipsum...</p>
+                    <ul class="thumbnails">
+                        <li><a href="#" class="step2 material0">White Wood</a></li>
+                        <li><a href="#" class="step2 material1">Dark Fine</a></li>
+                    </ul>
+                </div>
+
+                <div id="step3" class="step">
+                    <h2>Choose back</h2>
+                    <p>Lorem ipsum...</p>
+                    <ul class="thumbnails">
+                        <li><a href="#" class="step3 material0">White Wood</a></li>
+                        <li><a href="#" class="step3 material1">Dark Fine</a></li>
+                    </ul>
+                </div>
+
+                <div id="step4" class="step">
+                    <h2>Choose sides</h2>
+                    <p>Lorem ipsum...</p>
+                    <ul class="thumbnails">
+                        <li><a href="#" class="step4 material0">Wood</a></li>
+                        <li><a href="#" class="step4 material1">Dark</a></li>
+                    </ul>
+                </div>
+
+                <div id="step5" class="step">
+                    <h2>Choose rosette</h2>
+                    <p>Lorem ipsum...</p>
+                    <ul class="thumbnails">
+                        <li><a href="#" class="step5 material0">Wood</a></li>
+                        <li><a href="#" class="step5 material1">XXX</a></li>
+                        <li><a href="#" class="step5 material2">YYY</a></li>
+                    </ul>
+                </div>
+
+                <div id="step6" class="step">
+                    <h2>Choose stripe</h2>
+                    <p>Lorem ipsum...</p>
+                    <ul>
+                        <li><a href="#" id="step6 material0">Wood</a></li>
+                        <li><a href="#" id="step6 material1">XXX</a></li>
+                        <li><a href="#" id="step6 material2">YYY</a></li>
+                    </ul>
+                </div>
+
+                <div id="step7" class="step">
+                    <h2>Choose front detail</h2>
+                    <p>Lorem ipsum...</p>
+                    <ul>
+                        <li><a href="#" id="step7 material0">1</a></li>
+                        <li><a href="#" id="step7 material1">2</a></li>
+                        <li><a href="#" id="step7 material2">3</a></li>
+                    </ul>
+                </div>
+
+                <div id="step8" class="step">
+                    <h2>Choose side detail</h2>
+                    <p>Lorem ipsum...</p>
+                    <ul>
+                        <li><a href="#" id="step8 material0">1</a></li>
+                        <li><a href="#" id="step8 material1">2</a></li>
+                        <li><a href="#" id="step8 material2">3</a></li>
+                    </ul>
+                </div>
+
+                <div id="step9" class="step">
+                    <h2>Summary</h2>
+                    <p>Lorem ipsum...</p>
+                </div>
+
+            </div>
+
+            <div class="buttons">
+                <a id="back" class="button" href="#">Back</a>
+                <a id="next" class="button" href="#">Next</a>
+            </div>
+
+        </div>
+
     </div>
-
-    <div id="menu">
-
-      <div id="steps">
-
-        <div class="dots">
-          <span class="dot"></span>
-          <span class="dot"></span>
-          <span class="dot"></span>
-          <span class="dot"></span>
-          <span class="dot"></span>
-          <span class="dot"></span>
-          <span class="dot"></span>
-          <span class="dot"></span>          
-        </div>
-
-        <div class="step">          
-          <h2>Choose shape</h2>
-          <p>Lorem ipsum...</p>
-          <ul class="thumbnails">
-            <li><img src="files/thumb@2x.png"><a href="#" class="step1 body0">Body 0</a></li>
-            <li><img src="files/thumb@2x.png"><a href="#" class="step1 body1">Body 1</a></li>
-          </ul>
-          
-        </div>
-        
-        <div class="step">
-          <h2>Choose front</h2>
-          <p>Lorem ipsum...</p>
-          <ul class="thumbnails">
-            <li><a href="#" class="step2 material0">White Wood</a></li>
-            <li><a href="#" class="step2 material1">Dark Fine</a></li>
-          </ul>
-        </div>
-        
-        <div class="step">
-          <h2>Choose back</h2>
-          <p>Lorem ipsum...</p>
-          <ul class="thumbnails">
-            <li><a href="#" class="step3 material0">White Wood</a></li>
-            <li><a href="#" class="step3 material1">Dark Fine</a></li>
-          </ul>
-        </div>
-
-        <div class="step">
-          <h2>Choose sides</h2>
-          <p>Lorem ipsum...</p>
-          <ul class="thumbnails">
-            <li><a href="#" class="step4 material0">Wood</a></li>
-            <li><a href="#" class="step4 material1">Dark</a></li>
-          </ul>
-        </div>
-
-        <div class="step">
-          <h2>Choose rosette</h2>
-          <p>Lorem ipsum...</p>
-          <ul class="thumbnails">
-            <li><a href="#" class="step5 material0">Wood</a></li>
-            <li><a href="#" class="step5 material1">XXX</a></li>
-            <li><a href="#" class="step5 material2">YYY</a></li>
-          </ul>
-        </div>
-
-        <div class="step">
-          <h2>Choose stripe</h2>
-          <p>Lorem ipsum...</p>
-          <ul>
-            <li><a href="#" id="step6 material0">Wood</a></li>
-            <li><a href="#" id="step6 material1">XXX</a></li>
-            <li><a href="#" id="step6 material2">YYY</a></li>
-          </ul>
-        </div>
-
-        <div class="step">
-          <h2>Choose front detail</h2>
-          <p>Lorem ipsum...</p>
-          <ul>
-            <li><a href="#" id="step7 material0">1</a></li>
-            <li><a href="#" id="step7 material1">2</a></li>
-            <li><a href="#" id="step7 material2">3</a></li>
-          </ul>
-        </div> 
-        
-        <div class="step">
-          <h2>Choose side detail</h2>
-          <p>Lorem ipsum...</p>
-          <ul>
-            <li><a href="#" id="step8 material0">1</a></li>
-            <li><a href="#" id="step8 material1">2</a></li>
-            <li><a href="#" id="step8 material2">3</a></li>
-          </ul>
-        </div>    
-
-        <div class="step">
-          <h2>Summary</h2>
-          <p>Lorem ipsum...</p>          
-        </div>       
-          
-      </div>
-          
-      <div class="buttons">        
-        <a id="back" class="button" href="#">Back</a>
-        <a id="next" class="button" href="#">Next</a>
-      </div>
-        
-    </div>
-
-  </div>
-
-  <script type="module" src="https://www.vectary.com/embed/viewer/v1/scripts/vctr-viewer.js"></script>
 
 </body>
+
 </html>
