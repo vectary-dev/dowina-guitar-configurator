@@ -1,26 +1,31 @@
 {
     "objects": {
         "guitar1": {
-            "front": "Front",
-            "side": "Back",
-            "back": "Side",
-            "frontDetailFront": "FrontDetailFront",
-            "frontDetailSide": "FrontDetailSide",
-            "backDetail": "BackDetail",
-            "sideDetail": "SideDetail",
-            "hole": "Hole",
-            "rosette": "Rosette"
+            "sticker": "JC_Sticker",
+            "back": "JC_Back",
+            "side": "JC_Side",
+            "frontDetail": "JC_FrontDetail",
+            "backDetailMiddle": "JC_BackDetailMiddle",
+            "backDetailMiddle3": "JC_BackDetailMiddle_3",
+            "front": "JC_Front",
+            "backInside": "JC_BackInside",
+            "hole": "JC_Hole",
+            "sideDetialFront": "JC_SideDetailFront",
+            "sideDetailBack": "JC_SideDetailBack",
+            "rosette": "JC_Rosette"
         },
         "guitar2": {
-            "front": "Front2",
-            "side": "Back2",
-            "back": "Side2",
-            "frontDetailFront": "FrontDetailFront2",
-            "frontDetailSide": "FrontDetailSide2",
-            "backDetail": "BackDetail2",
-            "sideDetail": "SideDetail2",
-            "hole": "Hole2",
-            "rosette": "Rosette2"
+            "front": "GA_Front",
+            "side": "GA_Side",
+            "sticker": "GA_Sticker",
+            "frontDetail": "GA_FrontDetail",
+            "backDetailMiddle": "GA_BackDetailMiddle",
+            "back": "GA_Back",
+            "hole": "GA_Hole",
+            "sideDetailFront": "GA_SideDetailFront",
+            "sideDetailBack": "GA_SideDetailBack",
+            "backInside": "GA_BackInside",
+            "rosette": "GA_Rosette"
         }
     },
     "materials": {
@@ -70,7 +75,7 @@
             "name": "RosetteCam"
         }
     },
-    "backgrounds" : {
+    "backgrounds": {
         "theater": {
             "name": "Theater",
             "path": "files/theaterBG.hdr"

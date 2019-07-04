@@ -79,44 +79,68 @@ class Paging {
             }
         });
     }
+
+    getActiveStepName() {
+        return this.stepNames[this.activeStepIndex];
+    }
 }
 
 async function setVisibilityDeep(object, visibility) {
-    Object.getOwnPropertyNames(object).forEach(async key => {
-        await api.setVisibility(object[key], visibility);
+    Object.getOwnPropertyNames(object).forEach(key => {
+        api.setVisibility(object[key], visibility);
     });
 }
 
+// function setVisibilityExclusive(object) {
+//     const arrOfNames = Object.getOwnPropertyNames(object).map(name => object[name]);
+//     api.setVisibilityExclusive(arrOfNames, "mesh");
+// }
+
+async function createMaterials(dataMaterials) {
+    const materials = Object.getOwnPropertyNames(dataMaterials);
+    for (let i = 0; i < materials.length; i++) {
+        const mat = await api.createMaterial(materials[i]);
+        if (mat) {
+            console.log(`Material ${materials[i]} created`);
+        } else {
+            console.log(`Material ${materials[i]} cannot be created`);
+        }
+    }
+}
+
 async function init() {
-
-    await setVisibilityDeep(data.objects.guitar2, false);
-    await setVisibilityDeep(data.objects.guitar1, true);
-
-    await api.setCamera(data.cameras.rosetteCam);
     await api.setBackground(data.backgrounds.theater.path);
+    executeStepWithOption("step1", "option1");
 }
 
 function executeStepWithOption(stepName, option) {
     switch (stepName) {
         case "step1":
-            if (option === "option1") {
-                currentBody = data.objects.guitar1;
-                setVisibilityDeep(data.objects.guitar1, true);
-                setVisibilityDeep(data.objects.guitar2, false);
+            if (option) {
+                if (option === "option1") {
+                    currentBody = data.objects.guitar1;
+                    // setVisibilityExclusive(data.objects.guitar1);
+                    setVisibilityDeep(data.objects.guitar1, true);
+                    setVisibilityDeep(data.objects.guitar2, false);
+                } else {
+                    currentBody = data.objects.guitar2;
+                    setVisibilityDeep(data.objects.guitar1, false);
+                    setVisibilityDeep(data.objects.guitar2, true);
+                }
             } else {
-                currentBody = data.objects.guitar2;
-                setVisibilityDeep(data.objects.guitar2, true);
-                setVisibilityDeep(data.objects.guitar1, false);
+                api.setCamera(data.cameras.backCam.name);
             }
-            api.setCamera(data.cameras.rosetteCam);
             break;
         case "step2":
-            if (option === "option1") {
-                api.setMaterial(currentBody.name, data.materials.whiteWood);
+            if (option) {
+                if (option === "option1") {
+                    api.setMaterial("JC_Front", "White Wood");
+                } else {
+                    api.setMaterial(currentBody.front, data.materials.blueRosette.name);
+                }
             } else {
-                api.setMaterial(currentBody.name, data.materials.blueRosette);
+                api.setCamera(data.cameras.sideCam.name);
             }
-            api.setCamera(data.cameras.bodyCam);
             break;
     }
 }
@@ -131,10 +155,12 @@ function setListeners(buttons) {
     nextBtn.addEventListener("click", e => {
         e.preventDefault();
         paging.goToNextStep();
+        executeStepWithOption(paging.getActiveStepName());
     });
     backBtn.addEventListener("click", e => {
         e.preventDefault();
         paging.goToPreviousStep();
+        executeStepWithOption(paging.getActiveStepName());
     });
 
     for (let i = 0; i < buttons.steps.length; i++) {
@@ -163,8 +189,10 @@ async function run() {
         await api.init();
 
         data = await fetchData("/files/resource.json");
-
         await init();
+        console.log("All objects", await api.getObjects());
+
+        await createMaterials(data.materials);
 
         const stepsConf = {
             next: "next",
