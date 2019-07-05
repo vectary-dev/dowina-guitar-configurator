@@ -36,18 +36,26 @@
             "metalness": 0.2,
             "map": "files/wood.jpg"
         },
+        "original": {
+            "name": "Original Wood",
+            "roughness": 0.8,
+            "metalness": 0.2,
+            "map": "files/original.jpg"
+        },
         "blueRosette": {
             "name": "Blue Rosette",
             "roughness": 0.8,
             "metalness": 0.2,
-            "map": "files/rosette.png"
+            "map": "files/rosette.png",
+            "transparent": true
         },
         "yellowRosette": {
             "name": "Yellow Rosette",
             "color": "#eef442",
             "roughness": 0.8,
             "metalness": 0.2,
-            "map": "files/rosette.png"
+            "map": "files/rosette.png",
+            "transparent": true
         }
     },
     "cameras": {

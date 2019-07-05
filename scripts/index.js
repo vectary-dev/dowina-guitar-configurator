@@ -99,18 +99,36 @@ async function setVisibilityDeep(object, visibility) {
 async function createMaterials(dataMaterials) {
     const materials = Object.getOwnPropertyNames(dataMaterials);
     for (let i = 0; i < materials.length; i++) {
-        const mat = await api.createMaterial(materials[i]);
+        const mat = await api.createMaterial(dataMaterials[materials[i]]);
         if (mat) {
-            console.log(`Material ${materials[i]} created`);
+            console.log(`Material ${materials[i]} created`, mat);
         } else {
             console.log(`Material ${materials[i]} cannot be created`);
         }
     }
 }
 
+function start() {
+    if (localStorage.step1) {
+        executeStepWithOption("step1", localStorage.getItem("step1"));
+        elementExistsInLocalStorage("front");
+        elementExistsInLocalStorage("back");
+        elementExistsInLocalStorage("side");
+        elementExistsInLocalStorage("rosette");
+    } else {
+        executeStepWithOption("step1", "option1");
+    }
+}
+
+function elementExistsInLocalStorage(element) {
+    if (localStorage[element]) {
+        api.setMaterial(currentBody[element], localStorage.getItem(element));
+    }
+}
+
 async function init() {
     await api.setBackground(data.backgrounds.theater.path);
-    executeStepWithOption("step1", "option1");
+    start();
 }
 
 function executeStepWithOption(stepName, option) {
@@ -119,11 +137,13 @@ function executeStepWithOption(stepName, option) {
             if (option) {
                 if (option === "option1") {
                     currentBody = data.objects.guitar1;
+                    localStorage.setItem('step1', "option1");
                     // setVisibilityExclusive(data.objects.guitar1);
                     setVisibilityDeep(data.objects.guitar1, true);
                     setVisibilityDeep(data.objects.guitar2, false);
                 } else {
                     currentBody = data.objects.guitar2;
+                    localStorage.setItem('step1', "option2");
                     setVisibilityDeep(data.objects.guitar1, false);
                     setVisibilityDeep(data.objects.guitar2, true);
                 }
@@ -133,10 +153,13 @@ function executeStepWithOption(stepName, option) {
             break;
         case "step2":
             if (option) {
+                api.setMaterial(currentBody.front, localStorage.front);
                 if (option === "option1") {
-                    api.setMaterial(currentBody.front, "White_Wood");
+                    localStorage.setItem('front', data.materials.whiteWood.name);
+                    api.setMaterial(currentBody.front, data.materials.whiteWood.name);
                 } else {
-                    api.setMaterial(currentBody.front, data.materials.blueRosette.name);
+                    localStorage.setItem('front', data.materials.original.name);
+                    api.setMaterial(currentBody.front, data.materials.original.name);
                 }
             } else {
                 api.setCamera(data.cameras.bodyCam.name);
@@ -144,10 +167,13 @@ function executeStepWithOption(stepName, option) {
             break;
         case "step3":
             if (option) {
+                api.setMaterial(currentBody.back, localStorage.back);
                 if (option === "option1") {
-                    api.setMaterial("JC_Front", "White Wood");
+                    localStorage.setItem('back', data.materials.whiteWood.name);
+                    api.setMaterial(currentBody.back, data.materials.whiteWood.name);
                 } else {
-                    api.setMaterial(currentBody.front, data.materials.blueRosette.name);
+                    localStorage.setItem('back', data.materials.original.name);
+                    api.setMaterial(currentBody.back, data.materials.original.name);
                 }
             } else {
                 api.setCamera(data.cameras.backCam.name);
@@ -155,10 +181,13 @@ function executeStepWithOption(stepName, option) {
             break;
         case "step4":
             if (option) {
+                api.setMaterial(currentBody.side, localStorage.side);
                 if (option === "option1") {
-                    api.setMaterial("JC_Front", "White Wood");
+                    localStorage.setItem('side', data.materials.whiteWood.name);
+                    api.setMaterial(currentBody.side, data.materials.whiteWood.name);
                 } else {
-                    api.setMaterial(currentBody.front, data.materials.blueRosette.name);
+                    localStorage.setItem('side', data.materials.original.name);
+                    api.setMaterial(currentBody.side, data.materials.original.name);
                 }
             } else {
                 api.setCamera(data.cameras.sideCam.name);
@@ -166,10 +195,13 @@ function executeStepWithOption(stepName, option) {
             break;
         case "step5":
             if (option) {
+                api.setMaterial(currentBody.rosette, localStorage.rosette);
                 if (option === "option1") {
-                    api.setMaterial("JC_Front", "White Wood");
+                    localStorage.setItem('rosette', data.materials.blueRosette.name);
+                    api.setMaterial(currentBody.rosette, data.materials.blueRosette.name);
                 } else {
-                    api.setMaterial(currentBody.front, data.materials.blueRosette.name);
+                    localStorage.setItem('rosette', data.materials.yellowRosette.name);
+                    api.setMaterial(currentBody.rosette, data.materials.yellowRosette.name);
                 }
             } else {
                 api.setCamera(data.cameras.rosetteCam.name);
@@ -178,9 +210,9 @@ function executeStepWithOption(stepName, option) {
         case "step6":
             if (option) {
                 if (option === "option1") {
-                    api.setMaterial("JC_Front", "White Wood");
+                    console.log("Missing Materials");
                 } else {
-                    api.setMaterial(currentBody.front, data.materials.blueRosette.name);
+                    console.log("Missing Materials");
                 }
             } else {
                 api.setCamera(data.cameras.backDetailCam.name);
@@ -189,9 +221,9 @@ function executeStepWithOption(stepName, option) {
         case "step7":
             if (option) {
                 if (option === "option1") {
-                    api.setMaterial("JC_Front", "White Wood");
+                    console.log("Missing Materials");
                 } else {
-                    api.setMaterial(currentBody.front, data.materials.blueRosette.name);
+                    console.log("Missing Materials");
                 }
             } else {
                 api.setCamera(data.cameras.frontDetailCam.name);
@@ -200,9 +232,9 @@ function executeStepWithOption(stepName, option) {
         case "step8":
             if (option) {
                 if (option === "option1") {
-                    api.setMaterial("JC_Front", "White Wood");
+                    console.log("Missing Materials");
                 } else {
-                    api.setMaterial(currentBody.front, data.materials.blueRosette.name);
+                    console.log("Missing Materials");
                 }
             } else {
                 api.setCamera(data.cameras.sideDetailCam.name);
@@ -211,9 +243,7 @@ function executeStepWithOption(stepName, option) {
         case "step9":
             if (option) {
                 if (option === "option1") {
-                    api.setMaterial("JC_Front", "White Wood");
-                } else {
-                    api.setMaterial(currentBody.front, data.materials.blueRosette.name);
+                    console.log("Missing Materials");
                 }
             } else {
                 api.setCamera(data.cameras.frontCam.name);
