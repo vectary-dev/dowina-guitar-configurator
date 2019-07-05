@@ -5,6 +5,7 @@
             "back": "JC_Back",
             "side": "JC_Side",
             "frontDetail": "JC_FrontDetail",
+            "backDetail": "JC_BackDetail",
             "backDetailMiddle": "JC_BackDetailMiddle",
             "backDetailMiddle3": "JC_BackDetailMiddle_3",
             "front": "JC_Front",

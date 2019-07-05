@@ -128,10 +128,32 @@ function executeStepWithOption(stepName, option) {
                     setVisibilityDeep(data.objects.guitar2, true);
                 }
             } else {
-                api.setCamera(data.cameras.backCam.name);
+                api.setCamera(data.cameras.frontCam.name);
             }
             break;
         case "step2":
+            if (option) {
+                if (option === "option1") {
+                    api.setMaterial(currentBody.front, "White_Wood");
+                } else {
+                    api.setMaterial(currentBody.front, data.materials.blueRosette.name);
+                }
+            } else {
+                api.setCamera(data.cameras.bodyCam.name);
+            }
+            break;
+        case "step3":
+            if (option) {
+                if (option === "option1") {
+                    api.setMaterial("JC_Front", "White Wood");
+                } else {
+                    api.setMaterial(currentBody.front, data.materials.blueRosette.name);
+                }
+            } else {
+                api.setCamera(data.cameras.backCam.name);
+            }
+            break;
+        case "step4":
             if (option) {
                 if (option === "option1") {
                     api.setMaterial("JC_Front", "White Wood");
@@ -140,6 +162,61 @@ function executeStepWithOption(stepName, option) {
                 }
             } else {
                 api.setCamera(data.cameras.sideCam.name);
+            }
+            break;
+        case "step5":
+            if (option) {
+                if (option === "option1") {
+                    api.setMaterial("JC_Front", "White Wood");
+                } else {
+                    api.setMaterial(currentBody.front, data.materials.blueRosette.name);
+                }
+            } else {
+                api.setCamera(data.cameras.rosetteCam.name);
+            }
+            break;
+        case "step6":
+            if (option) {
+                if (option === "option1") {
+                    api.setMaterial("JC_Front", "White Wood");
+                } else {
+                    api.setMaterial(currentBody.front, data.materials.blueRosette.name);
+                }
+            } else {
+                api.setCamera(data.cameras.backDetailCam.name);
+            }
+            break;
+        case "step7":
+            if (option) {
+                if (option === "option1") {
+                    api.setMaterial("JC_Front", "White Wood");
+                } else {
+                    api.setMaterial(currentBody.front, data.materials.blueRosette.name);
+                }
+            } else {
+                api.setCamera(data.cameras.frontDetailCam.name);
+            }
+            break;
+        case "step8":
+            if (option) {
+                if (option === "option1") {
+                    api.setMaterial("JC_Front", "White Wood");
+                } else {
+                    api.setMaterial(currentBody.front, data.materials.blueRosette.name);
+                }
+            } else {
+                api.setCamera(data.cameras.sideDetailCam.name);
+            }
+            break;
+        case "step9":
+            if (option) {
+                if (option === "option1") {
+                    api.setMaterial("JC_Front", "White Wood");
+                } else {
+                    api.setMaterial(currentBody.front, data.materials.blueRosette.name);
+                }
+            } else {
+                api.setCamera(data.cameras.frontCam.name);
             }
             break;
     }
