@@ -47,6 +47,9 @@
             "roughness": 0.8,
             "metalness": 0.2,
             "map": "files/rosette.png",
+            "alphaMap": "files/rosette_alpha.png",
+            "premultipliedAlpha": true,
+            "side": 2,
             "transparent": true
         },
         "yellowRosette": {
@@ -55,6 +58,8 @@
             "roughness": 0.8,
             "metalness": 0.2,
             "map": "files/rosette.png",
+            "alphaMap": "files/rosette_alpha.png",
+            "side": 2,
             "transparent": true
         }
     },
