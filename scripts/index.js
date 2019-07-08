@@ -122,7 +122,8 @@ function start() {
 
 function elementExistsInLocalStorage(element) {
     if (localStorage[element]) {
-        api.setMaterial(currentBody[element], localStorage.getItem(element));
+        const materialName = localStorage.getItem(element);
+        api.setMaterial(currentBody[element], materialName);
     }
 }
 
@@ -296,10 +297,9 @@ async function run() {
         await api.init();
 
         data = await fetchData("/files/resource.json");
+        await createMaterials(data.materials);
         await init();
         console.log("All objects", await api.getObjects());
-
-        await createMaterials(data.materials);
 
         const stepsConf = {
             next: "next",
