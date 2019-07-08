@@ -169,32 +169,23 @@ function executeStepWithOption(stepName, option) {
         case "step3":
             if (option) {
                 api.setMaterial(currentBody.back, localStorage.back);
+                api.setMaterial(currentBody.side, localStorage.side);
                 if (option === "option1") {
                     localStorage.setItem('back', data.materials.whiteWood.name);
                     api.setMaterial(currentBody.back, data.materials.whiteWood.name);
+                    localStorage.setItem('side', data.materials.whiteWood.name);
+                    api.setMaterial(currentBody.side, data.materials.whiteWood.name);
                 } else {
                     localStorage.setItem('back', data.materials.original.name);
                     api.setMaterial(currentBody.back, data.materials.original.name);
+                    localStorage.setItem('side', data.materials.original.name);
+                    api.setMaterial(currentBody.side, data.materials.original.name);
                 }
             } else {
                 api.setCamera(data.cameras.backCam.name);
             }
             break;
         case "step4":
-            if (option) {
-                api.setMaterial(currentBody.side, localStorage.side);
-                if (option === "option1") {
-                    localStorage.setItem('side', data.materials.whiteWood.name);
-                    api.setMaterial(currentBody.side, data.materials.whiteWood.name);
-                } else {
-                    localStorage.setItem('side', data.materials.original.name);
-                    api.setMaterial(currentBody.side, data.materials.original.name);
-                }
-            } else {
-                api.setCamera(data.cameras.sideCam.name);
-            }
-            break;
-        case "step5":
             if (option) {
                 api.setMaterial(currentBody.rosette, localStorage.rosette);
                 if (option === "option1") {
@@ -214,7 +205,7 @@ function executeStepWithOption(stepName, option) {
                 api.setCamera(data.cameras.rosetteCam.name);
             }
             break;
-        case "step6":
+        case "step5":
             if (option) {
                 if (option === "option1") {
                     console.log("Missing Materials");
@@ -225,7 +216,7 @@ function executeStepWithOption(stepName, option) {
                 api.setCamera(data.cameras.backDetailCam.name);
             }
             break;
-        case "step7":
+        case "step6":
             if (option) {
                 if (option === "option1") {
                     console.log("Missing Materials");
@@ -236,7 +227,7 @@ function executeStepWithOption(stepName, option) {
                 api.setCamera(data.cameras.frontDetailCam.name);
             }
             break;
-        case "step8":
+        case "step7":
             if (option) {
                 if (option === "option1") {
                     console.log("Missing Materials");
@@ -247,7 +238,7 @@ function executeStepWithOption(stepName, option) {
                 api.setCamera(data.cameras.sideDetailCam.name);
             }
             break;
-        case "step9":
+        case "step8":
             if (option) {
                 if (option === "option1") {
                     console.log("Missing Materials");
@@ -310,7 +301,7 @@ async function run() {
         const stepsConf = {
             next: "next",
             back: "back",
-            steps: ["step1", "step2", "step3", "step4", "step5", "step6", "step7", "step8", "step9"]
+            steps: ["step1", "step2", "step3", "step4", "step5", "step6", "step7", "step8"]
         };
 
         paging.setSteps(stepsConf.steps);
