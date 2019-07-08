@@ -198,11 +198,17 @@ function executeStepWithOption(stepName, option) {
             if (option) {
                 api.setMaterial(currentBody.rosette, localStorage.rosette);
                 if (option === "option1") {
-                    localStorage.setItem('rosette', data.materials.blueRosette.name);
-                    api.setMaterial(currentBody.rosette, data.materials.blueRosette.name);
+                    localStorage.setItem('rosette', data.materials.rosette1.name);
+                    api.setMaterial(currentBody.rosette, data.materials.rosette1.name);
+                } else if (option === "option2") {
+                    localStorage.setItem('rosette', data.materials.rosette2.name);
+                    api.setMaterial(currentBody.rosette, data.materials.rosette2.name);
+                } else if (option === "option3") {
+                    localStorage.setItem('rosette', data.materials.rosette3.name);
+                    api.setMaterial(currentBody.rosette, data.materials.rosette3.name);
                 } else {
-                    localStorage.setItem('rosette', data.materials.yellowRosette.name);
-                    api.setMaterial(currentBody.rosette, data.materials.yellowRosette.name);
+                    localStorage.setItem('rosette', data.materials.rosette4.name);
+                    api.setMaterial(currentBody.rosette, data.materials.rosette4.name);
                 }
             } else {
                 api.setCamera(data.cameras.rosetteCam.name);

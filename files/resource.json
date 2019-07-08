@@ -42,25 +42,33 @@
             "metalness": 0.2,
             "map": "files/original.jpg"
         },
-        "blueRosette": {
+        "rosette1": {
             "name": "Blue Rosette",
             "roughness": 0.8,
             "metalness": 0.2,
-            "map": "files/rosette.png",
-            "alphaMap": "files/rosette_alpha.png",
-            "premultipliedAlpha": true,
-            "side": 2,
-            "transparent": true
+            "map": "files/rosette1.png",
+            "alphaMap": "files/rosette1_alpha.jpg"
         },
-        "yellowRosette": {
-            "name": "Yellow Rosette",
-            "color": "#eef442",
+        "rosette2": {
+            "name": "Blue Rosette Full",
             "roughness": 0.8,
             "metalness": 0.2,
-            "map": "files/rosette.png",
-            "alphaMap": "files/rosette_alpha.png",
-            "side": 2,
-            "transparent": true
+            "map": "files/rosette2.png",
+            "alphaMap": "files/rosette2_alpha.png"
+        },
+        "rosette3": {
+            "name": "Dark Rosette",
+            "roughness": 0.8,
+            "metalness": 0.2,
+            "map": "files/rosette3.png",
+            "alphaMap": "files/rosette2_alpha.png"
+        },
+        "rosette4": {
+            "name": "Ethno Rosette",
+            "roughness": 0.8,
+            "metalness": 0.2,
+            "map": "files/rosette4.png",
+            "alphaMap": "files/rosette2_alpha.png"
         }
     },
     "cameras": {
