@@ -85,11 +85,11 @@ class Paging {
     }
 }
 
-async function setVisibilityDeep(object, visibility) {
-    Object.getOwnPropertyNames(object).forEach(key => {
-        api.setVisibility(object[key], visibility);
-    });
-}
+// async function setVisibilityDeep(object, visibility) {
+//     Object.getOwnPropertyNames(object).forEach(key => {
+//         api.setVisibility(object[key], visibility, true);
+//     });
+// }
 
 // function setVisibilityExclusive(object) {
 //     const arrOfNames = Object.getOwnPropertyNames(object).map(name => object[name]);
@@ -136,18 +136,52 @@ function executeStepWithOption(stepName, option) {
     switch (stepName) {
         case "step1":
             if (option) {
-                if (option === "option1") {
-                    currentBody = data.objects.guitar1;
-                    localStorage.setItem('step1', "option1");
-                    // setVisibilityExclusive(data.objects.guitar1);
-                    setVisibilityDeep(data.objects.guitar1, true);
-                    setVisibilityDeep(data.objects.guitar2, false);
-                } else {
-                    currentBody = data.objects.guitar2;
-                    localStorage.setItem('step1', "option2");
-                    setVisibilityDeep(data.objects.guitar1, false);
-                    setVisibilityDeep(data.objects.guitar2, true);
-                }
+
+                switch (option) {
+                    case "option1":
+                        currentBody = data.objects.guitar1;
+                        localStorage.setItem('step1', "option1");                                            
+                        api.setVisibility("JC", true, true);
+                        api.setVisibility("NECK", true, false);
+                        break;
+                    case "option2":
+                        currentBody = data.objects.guitar2;
+                        localStorage.setItem('step1', "option2");                        
+                        api.setVisibility("GA", true, true);
+                        api.setVisibility("NECK", true, false);
+                        break;
+                    case "option3":
+                        currentBody = data.objects.guitar3;
+                        localStorage.setItem('step1', "option3");                        
+                        api.setVisibility("D", true, true);
+                        api.setVisibility("NECK", true, false);
+                        break;
+                    case "option4":
+                        currentBody = data.objects.guitar3;
+                        localStorage.setItem('step1', "option4");                        
+                        api.setVisibility("DC", true, true);
+                        api.setVisibility("NECK", true, false);
+                        break;
+                    case "option5":
+                        currentBody = data.objects.guitar3;
+                        localStorage.setItem('step1', "option5");                        
+                        api.setVisibility("GAC", true, true);
+                        api.setVisibility("NECK", true, false);
+                        break;
+                    case "option6":
+                        currentBody = data.objects.guitar3;
+                        localStorage.setItem('step1', "option6");                        
+                        api.setVisibility("J", true, true);
+                        api.setVisibility("NECK", true, false);
+                        break; 
+                    case "option7":
+                        currentBody = data.objects.guitar3;
+                        localStorage.setItem('step1', "option7");                        
+                        api.setVisibility("BV", true, true);
+                        api.setVisibility("NECK", true, false);
+                        break;                                               
+                }                
+
             } else {
                 api.setCamera(data.cameras.frontCam.name);
             }
