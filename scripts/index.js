@@ -183,7 +183,7 @@ function executeStepWithOption(stepName, option) {
                 }                
 
             } else {
-                api.setCamera(data.cameras.frontCam.name);
+                api.switchView(data.cameras.frontCam.name);
             }
             break;
         case "step2":
@@ -197,7 +197,7 @@ function executeStepWithOption(stepName, option) {
                     api.setMaterial(currentBody.front, data.materials.original.name);
                 }
             } else {
-                api.setCamera(data.cameras.bodyCam.name);
+                api.switchView(data.cameras.bodyCam.name);
             }
             break;
         case "step3":
@@ -216,7 +216,7 @@ function executeStepWithOption(stepName, option) {
                     api.setMaterial(currentBody.side, data.materials.original.name);
                 }
             } else {
-                api.setCamera(data.cameras.backCam.name);
+                api.switchView(data.cameras.backCam.name);
             }
             break;
         case "step4":
@@ -236,7 +236,7 @@ function executeStepWithOption(stepName, option) {
                     api.setMaterial(currentBody.rosette, data.materials.rosette4.name);
                 }
             } else {
-                api.setCamera(data.cameras.rosetteCam.name);
+                api.switchView(data.cameras.rosetteCam.name);
             }
             break;
         case "step5":
@@ -247,7 +247,7 @@ function executeStepWithOption(stepName, option) {
                     console.log("Missing Materials");
                 }
             } else {
-                api.setCamera(data.cameras.backDetailCam.name);
+                api.switchView(data.cameras.backDetailCam.name);
             }
             break;
         case "step6":
@@ -258,7 +258,7 @@ function executeStepWithOption(stepName, option) {
                     console.log("Missing Materials");
                 }
             } else {
-                api.setCamera(data.cameras.frontDetailCam.name);
+                api.switchView(data.cameras.frontDetailCam.name);
             }
             break;
         case "step7":
@@ -269,7 +269,7 @@ function executeStepWithOption(stepName, option) {
                     console.log("Missing Materials");
                 }
             } else {
-                api.setCamera(data.cameras.sideDetailCam.name);
+                api.switchView(data.cameras.sideDetailCam.name);
             }
             break;
         case "step8":
@@ -278,7 +278,7 @@ function executeStepWithOption(stepName, option) {
                     console.log("Missing Materials");
                 }
             } else {
-                api.setCamera(data.cameras.frontCam.name);
+                api.switchView(data.cameras.frontCam.name);
             }
             break;
     }
